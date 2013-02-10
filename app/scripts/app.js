@@ -27,13 +27,23 @@ var angularjsNodeApp = angular.module('angularjsNodeApp', [])
         redirectTo: '/'
       });
   }]).run(['$http', function ($http) {
-    var get = $http.get;
-    $http.get = function (url, config) {
-      if (/api/.test(url)) {
-        url = 'http://localhost:3502/' + url;
-      }
-      
-      return get(url, config);
-    };
 
+    /**
+     * For demonstration purposes only, since we are using CORS
+     * requests on a different server port than client, check to
+     * see if we do any API calls, and if so, force the call to
+     * our server's port with the original arguments and updated url.
+     */
+    var methods = ['delete', 'get', 'head', 'jsonp', 'post', 'put'];
+    _.each(methods, function (method) {
+      //var original = $http[method];
+      $http[method] = _.wrap($http[method], function (original) {
+        var args = [].splice.call(arguments, 1);
+        var url = args[0];
+        if (/api/.test(url)) {
+          args[0] = 'http://localhost:3502/' + url;
+        }
+        return original.apply(this, args);
+      });
+    });
   }]);

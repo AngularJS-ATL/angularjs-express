@@ -1,7 +1,5 @@
 var express = require('express');
 var config = require('./config');
-// var storage = require('./storage');
-
 var app = module.exports = express();
 
 // Check node_env, if not set default to development

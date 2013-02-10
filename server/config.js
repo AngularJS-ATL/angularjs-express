@@ -4,21 +4,21 @@
  */
 function setDevelopmentConfig(){
     // These are just examples, insert you info here
-    DatabaseConfig.port = 27867;
-    DatabaseConfig.host = 'dbh86.mongolab.com';
-    DatabaseConfig.name = 'brink';
-    DatabaseConfig.user = 'brinkApp';
-    DatabaseConfig.pass = 'gRay6h0st';
+    DatabaseConfig.port = 1000;
+    DatabaseConfig.host = '';
+    DatabaseConfig.name = '';
+    DatabaseConfig.user = '';
+    DatabaseConfig.pass = '';
 
     EnvConfig.port = 3502;
 }
 
 function setProductionConfig(){
-    DatabaseConfig.port = 27867;
-    DatabaseConfig.host = 'dbh86.mongolab.com';
-    DatabaseConfig.name = 'brink';
-    DatabaseConfig.user = 'brinkApp';
-    DatabaseConfig.pass = 'gRay6h0st';
+    DatabaseConfig.port = 1000;
+    DatabaseConfig.host = '';
+    DatabaseConfig.name = '';
+    DatabaseConfig.user = '';
+    DatabaseConfig.pass = '';
 
     EnvConfig.port = 80;
 }
