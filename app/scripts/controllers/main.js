@@ -5,10 +5,16 @@ angularjsNodeApp.controller('MainCtrl', function($scope, $http) {
     $scope.tips = tips;
   });
 
-  $scope.createTip = function createTip(tip) {
-    $http.post('api/tips/create', {tip: tip }).success(function saveTip(newTip) {
+  $scope.createTip = function createTip(title, description) {
+    $http.post('api/tips/create', {tip: { title: title, description: description} }).success(function saveTip(newTip) {
       $scope.tips.push(newTip);
-      $scope.newTip = undefined;
+      $scope.tipTitle = $scope.tipDescription = undefined;
     });
-  }
+  };
+
+  $scope.deleteTip = function deleteTip(tip) {
+    $http.delete('api/tips/delete', tip).success(function() {
+      $scope.tips = _.without($scope.tips, tip);
+    });
+  };
 });
