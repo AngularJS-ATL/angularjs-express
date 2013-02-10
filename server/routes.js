@@ -1,24 +1,22 @@
+var Tip = require('./models/tip');
 
 app = module.parent.exports.app;
 
-var tips = [
-  { title: 'Directives', description: 'Use isolated scope' },
-  { title: 'Services', description: 'Use to share code between components' }
-];
-
-app.get('/api/post/index', function (req, res) {
-  res.send('Hello from ExpressJS!');
-});
-
 app.get('/api/tips', function (req, res) {
-  res.send(tips);
+  Tip.find({}, function (error, tips) {
+    res.send(tips);
+  });
 });
 
-app.post('/api/tips/create', function (req, res) {
-  res.send(req.body.tip);
+app.post('/api/tips', function (req, res) {
+  var tip = new Tip(req.body.tip);
+  tip.save(function () {
+    res.send(tip);
+  })
 });
 
-app.delete('/api/tips/delete', function (req, res) {
-  // Remove it somehow
-  res.send(200);
+app.delete('/api/tips/:id', function (req, res) {
+  Tip.find({ _id: req.params.id }).remove(function () {
+    res.send(200);
+  });
 });

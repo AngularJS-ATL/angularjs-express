@@ -4,21 +4,21 @@
  */
 function setDevelopmentConfig(){
     // These are just examples, insert you info here
-    DatabaseConfig.port = 1000;
-    DatabaseConfig.host = '';
-    DatabaseConfig.name = '';
-    DatabaseConfig.user = '';
-    DatabaseConfig.pass = '';
+    DatabaseConfig.port = 27437;
+    DatabaseConfig.host = 'dbh43.mongolab.com';
+    DatabaseConfig.name = 'angularjs-atl';
+    DatabaseConfig.user = 'angularjs';
+    DatabaseConfig.pass = 'angularjs';
 
     EnvConfig.port = 3502;
 }
 
 function setProductionConfig(){
-    DatabaseConfig.port = 1000;
-    DatabaseConfig.host = '';
-    DatabaseConfig.name = '';
-    DatabaseConfig.user = '';
-    DatabaseConfig.pass = '';
+    DatabaseConfig.port = 27437;
+    DatabaseConfig.host = 'dbh43.mongolab.com';
+    DatabaseConfig.name = 'angularjs-atl';
+    DatabaseConfig.user = 'angularjs';
+    DatabaseConfig.pass = 'angularjs';
 
     EnvConfig.port = 80;
 }

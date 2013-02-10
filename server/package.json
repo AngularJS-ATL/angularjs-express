@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "dependencies": {
     "express": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "mongoose": "*"
   },
   "engines": {
     "node": "0.8.7",
