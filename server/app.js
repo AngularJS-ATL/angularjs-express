@@ -7,7 +7,7 @@ process.env.NODE_ENV = (process.env.NODE_ENV || "development");
 
 var cors = function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
 
   if (req.method === 'OPTIONS') {
     return res.send(204);
@@ -18,7 +18,8 @@ var cors = function (req, res, next) {
 
 app.configure(function(){
   app.use(express.methodOverride());
-  app.use(cors)
+  app.use(express.bodyParser());
+  app.use(cors);
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
   app.use(express.directory(__dirname + '/public'));

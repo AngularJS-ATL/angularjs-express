@@ -1,10 +1,11 @@
 <div class="hero-unit">
-  <h1>Cheerio!</h1>
-  <p>You now have</p>
+  <h1>AngularJS Atlanta</h1>
+  <h3>Full Stack Demo</h3>
+  
   <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
+    <li ng-repeat="tip in tips">{{tip}}</li>
   </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
-  <a href="#/api/post/index">Post</a>
+  
+  <input type="text" ng-model="newTip">
+  <a ng-click="createTip(newTip)">Create New Tip</a>
 </div>
