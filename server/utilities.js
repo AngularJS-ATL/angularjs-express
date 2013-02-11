@@ -17,5 +17,4 @@ module.exports.createDatabaseConnection = function createDatabaseConnection() {
   var dbConfig = config.DatabaseConfig;
   var connString = 'mongodb://' + dbConfig.user + ':' + dbConfig.pass + '@' + dbConfig.host + ':' + dbConfig.port + '/' + dbConfig.name;    
   mongoose.connect(connString);
-  console.log('Connected to database');
 };
