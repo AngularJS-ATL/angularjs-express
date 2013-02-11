@@ -6,19 +6,8 @@ var app = module.exports = express();
 // Check node_env, if not set default to development
 process.env.NODE_ENV = (process.env.NODE_ENV || "development");
 
-var cors = function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,OPTIONS,DELETE");
-
-  if (req.method === 'OPTIONS') {
-    return res.send(204);
-  }
-
-  next();
-};
-
 app.configure(function(){
+  app.use(express.compress());
   app.use(express.methodOverride());
   app.use(express.bodyParser());
   app.use(utils.configureCors);

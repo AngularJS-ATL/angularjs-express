@@ -1,22 +1,7 @@
-var Tip = require('./models/tip');
-
 app = module.parent.exports.app;
 
-app.get('/api/tips', function (req, res) {
-  Tip.find({}, function (error, tips) {
-    res.send(tips);
-  });
-});
+var tipController = require('./controllers/tips');
 
-app.post('/api/tips', function (req, res) {
-  var tip = new Tip(req.body.tip);
-  tip.save(function () {
-    res.send(tip);
-  })
-});
-
-app.delete('/api/tips/:id', function (req, res) {
-  Tip.find({ _id: req.params.id }).remove(function () {
-    res.send(200);
-  });
-});
+app.get('/api/tips', tipController.all);
+app.post('/api/tips', tipController.create);
+app.delete('/api/tips/:id', tipController.delete);
